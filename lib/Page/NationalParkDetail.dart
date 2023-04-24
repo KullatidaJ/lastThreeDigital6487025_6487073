@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:national_view/Page/SignIn.dart';
 import 'package:national_view/Page/Welcome.dart';
@@ -43,27 +44,44 @@ class NationalParkDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(name),
+        backgroundColor: Colors.grey[300],
+        title: Text(name, style: TextStyle(color: Colors.grey[900]),),
+
+        //เปลี่ยนสีให้ลูกศรเป็นสีเทา
+        leading: Container(
+          margin: EdgeInsets.only(left: 10),
+          child: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.grey[900]),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ),
+        
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PopupMenuButton(
-              icon: Icon(Icons.more_vert),
+              icon: Icon(
+                Icons.more_vert, 
+                color: Colors.grey[900],
+              ),
               itemBuilder: (BuildContext context) {
                 return [
                   const PopupMenuItem(
                     child: Text('Logout'),
-                    //value: 1,
+                    value: 'logout',
                   ),
                 ];
               },
               onSelected: (value) {
                 // Handle menu item selection here
-               Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SignInPage()),
-                  (route) => false,
-                );
+                if (value == 'logout') {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const WelcomePage()),
+                    (route) => false,
+                  );
+                }
               },
             ),
           ),

@@ -216,3 +216,8 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 }
+
+//แหล่งที่มา: 
+//Flutter Login Page: https://youtu.be/Dh-cTQJgM-Q
+//Flutter Register Page: https://youtu.be/idJDAdn_jKk
+//Flutter Firebase: https://youtu.be/rWamixHIKmQ
