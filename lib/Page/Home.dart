@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   Future<List<Map<String, String>>> fetchnationalparks() async {
     //ส่ง HTTP request ไปยัง API ด้วย method GET, ส่ง uri ที่ต้องการมาในรุปแบบ .parse()
     final response = await http.get(Uri.parse(
-        'http://10.62.112.211/api/national-parks/')); // เปลี่น เลข ip address
+        'http://10.62.81.174/api/national-parks/')); // เปลี่น เลข ip address
 
     // ตรวจสอบสถานะ response 200=ฯษ
     if (response.statusCode == 200) {
@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.4,
             child: Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 20),
+              padding: const EdgeInsets.only(top: 2, bottom: 20),
               child: Image.network(
                 'https://cdn.discordapp.com/attachments/506416477310812161/1097210605041111040/564000010482201.png',
                 fit: BoxFit.cover,
@@ -160,8 +160,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Text('National Park List', style: TextStyle(fontSize: 20)),
+            padding: EdgeInsets.only(top:1.0, bottom: 8.0),
+            child: Text('National Park List', style: TextStyle(
+              fontSize: 20,fontWeight: FontWeight.bold)),
           ),
           Expanded(
             child: ListView.builder(
@@ -209,12 +210,12 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.only(top: 20, left: 21),
                     child: Row(
                       children: [
                         Container(
                             width: MediaQuery.of(context).size.width * 0.3,
-                            height: 200,
+                            height: 150,
                             child: Image.network(
                               image,
                               fit: BoxFit.cover,
