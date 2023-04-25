@@ -161,7 +161,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(5.0),
             child: Text(
             'National Park List',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20)
             ),
           ),
           Expanded(
